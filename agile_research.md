@@ -53,8 +53,8 @@ the end of each sprint.
 
 In software development, they encourage the following pattern because it provides an easy way to keep all of these 
 goals in mind while being very succinct:
-* "as a <who benefits from this work?> I want to <what do they want to be able to do?> so that I can 
-<why do they want to be able to do it?>"
+* "as a <who benefits from this work?> I want to <what do they want to be able to do?> so that 
+I can <why do they want to be able to do it?>"
 
 Most of the time, a researcher starts by wanting to create new knowledge for herself or her research group. 
 Most software user stories start with "**as a user...**", but in research, most "user stories" will start with 
