@@ -1,9 +1,8 @@
 # Agile For Research Work
 
-[Agile](https://en.wikipedia.org/wiki/Agile_software_development) refers to a philosophy for developing software projects. 
+[Agile](https://en.wikipedia.org/wiki/Agile_software_development) refers to a philosophy for managing software projects. 
 Why would we consider using it for research/R&D projects where the immediate goal is not necessarily to produce working 
 software for customers?
-
 
 1. The various research communities have not produced specific frameworks that are as mature or useful as the most popular 
 agile frameworks for project management. If and when they do, these frameworks should be adopted by researchers. 
@@ -13,28 +12,31 @@ For now, the software community has arguably refined the best project management
 knowledge to solve difficult problems. The software developer community already knows about project managing research projects. 
 Their frameworks solve many of the problems regularly encountered in other types of research.
 
-3. Researchers in other fields create a lot of software because research best practices emphasize using reproducible processes 
-that can be unambiguously communicated between research groups. The best tool for this is software. Modern researchers in most 
-fields are software developers to varying extents (yes, spreadsheets count as software).
+3. Researchers in other fields create a lot of software because research best practices emphasize using 
+[reproducible processes](https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research) 
+that can be unambiguously communicated between research groups. The best tool for this is software. Software development 
+skills are among the many skills required of the modern quantitative researcher 
+(yes, spreadsheets count as software development).
 
 ## Mapping Software Concepts to Research Concepts
 
  Research and software development are different disciplines with different goals. So, it is not a perfect fit to put 
  research work into an agile software development framework. But, it is clearer if we make some mappings between concepts:
-* features -> knowledge: Software developers deliver value by producing new features in their software. Researchers deliver 
-value by producing new knowledge in their field (possibly expressed as software).
-* working software -> usable knowledge: Agile software practices emphasize working software. The risk is that they 
-do a large amount of development, but fail to put the various pieces together in a way that makes them useful to others. 
+* **features** -> **knowledge**: Software developers deliver value by producing new **features** in their software. 
+Researchers deliver value by producing new **knowledge** in their field (possibly expressed as software).
+* **working software** -> **usable knowledge**: Agile software practices emphasize working software. The risk is that they 
+do a large amount of development, but fail to put the various pieces together in a way that makes them useful to customers. 
 So, each task must be delivered in a usable state before it is considered finished. Agile research should similarly 
 emphasize making the knowledge produced as easy to discover and use as possible, not spread across notebooks, emails, 
 disparate repo branches, and personal hard drives. Deliverables in research may take the form of short reports, 
 plots/dashboards, prototypes, or (as with software developers) working research software that can be easily 
 distributed to and run by other research teams.
-* users, customers -> other researchers, decision makers: Software developers create features for the benefit of 
+* **users, customers** -> **other researchers**, **decision makers**: 
+Software developers create features for the benefit of 
 their customers. Researchers create knowledge for themselves, other researchers, prototype developers, 
 decision makers, etc. It is important to keep in mind who you want to benefit from your hard work and think of 
 them as customers of your research efforts.
-* product owner -> principal investigator: Who has the vision and knowledge of the team's broad objectives, 
+* **product owner** -> **principal investigator**: Who has the vision and knowledge of the team's broad objectives, 
 competitive pressures, and business/funding context to best understand the priorities of the work to be done?
 
 ## User Stories
@@ -55,8 +57,8 @@ goals in mind while being very succinct:
 <why do they want to be able to do it?>"
 
 Most of the time, a researcher starts by wanting to create new knowledge for herself or her research group. 
-Most software user stories start with "as a user...", but in research, most "user stories" will start with 
-"as a researcher..." (or more specifically "as a data scientist...", "as a bioinformatician...", etc.). 
+Most software user stories start with "**as a user...**", but in research, most "user stories" will start with 
+"**as a researcher...**" (or more specifically "**as a data scientist...**", "**as a bioinformatician...**", etc.). 
 
 Most of the time, a researcher is working towards knowing something they didn't know before. Most software user 
 stories discuss a user wanting to use a feature in software, but in research most user stories will be about 
