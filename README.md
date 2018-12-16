@@ -6,6 +6,10 @@ Dan is a data scientist and recovering theoretical astrophysicist with profound 
 
 Dan is working as a data scientist in Vancouver.
 
+## Some Thoughts
+
+* [Agile For Research](agile_research.md)
+
 ## Contact
 
 * [LinkedIn](https://www.linkedin.com/in/mazurdan/)
