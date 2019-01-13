@@ -16,6 +16,7 @@ run by different collaborators working independently. Either the experiments are
 to manually coordinate on experiment appraoches.
 * Collaborators spend too much time merging changes into their independent development branches
 * The research process is difficult to reproduce (e.g. by another team) because the modeling decisions are not well tracked
+* The modeling process cannot scale to larger teams because capabilities will be required faster than they can be communicated
 * etc.
 
 To avoid these problems, we would like a solution for collaborating on model development that uses some best practices from 
@@ -40,4 +41,5 @@ Using this approach:
 * Collaborators can see what capabilities are available in the code base by looking at the code and merge history
 * It is easy to develop a principaled search through modeling decisions to achieve the best generalization performance
 * Research can be reproduced by running the final modeling optimization script
+* Data science modeling can be more easily scaled to larger, distributed teams
 
