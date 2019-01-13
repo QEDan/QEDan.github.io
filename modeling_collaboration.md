@@ -43,3 +43,8 @@ Using this approach:
 * Research can be reproduced by running the final modeling optimization script
 * Data science modeling can be more easily scaled to larger, distributed teams
 
+## Advice for Kaggle
+
+Kaggle is lousy with the copy-and-pasting code between notebooks problem. Instead of a competition between individual scripts, what if data science competitions required this kind of collaboration on a large, shared code base with a search through capabilities deciding on the best final model. Competitors could be evaluated by the combined lift provided by features they 
+implemented or improved as evaluated in the optimization search. This might produce better results for the contest sponsors with a fraction of the computing power required. If not, at least it would stop training Kagglers in a questionable model of software collaboration.
+
