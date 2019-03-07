@@ -10,6 +10,7 @@ Dan is working as a data scientist in Vancouver.
 
 * [Agile For Research](agile_research.md)
 * [Collaborating on Data Science Models](modeling_collaboration.md)
+* [Statement of Data Science Philosophy](philosophy.md)
 
 ## Contact
 
