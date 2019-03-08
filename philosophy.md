@@ -22,13 +22,15 @@ activities like driving a car or managing your personal finances.
 
 ## Data Science Values
 
-I believe that the most difficult aspect of data science is in managing the many ways that a data scientist and the 
-people who trust them can be fooled unintentionally. When that happens, the wrong decisions can be made and 
+I believe that the most difficult aspect of data science is in managing the [many ways that a data scientist 
+can be fooled unintentionally](https://github.com/amandabee/workshops/wiki/Round-Up:-Ethics-and-Skepticism). 
+When that happens, the wrong decisions can be made and 
 that has real-world consequences. Data can be very hard to interpret correctly and it requires 
-great care to avoid fooling onesself.
+great care to [avoid fooling onesself](http://calteches.library.caltech.edu/51/2/CargoCult.htm) in the face of many
+sources of uncertainty.
 
 Therefore, when I deliver work, I value the following things:
-* **My work is reproducible and transparent**. Deliverables (e.g. figures, experimental results, trained machine learning models,
+* **My work is [reproducible](https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research) and transparent**. Deliverables (e.g. figures, experimental results, trained machine learning models,
 etc.) are delivered along with the software required to reproduce them from the provided inputs. This ensures that any aspect of 
 the work can be investigated, reused, or expanded upon. Future research and software will build on what's created today and 
 that's easiest when the research is expressed as working software.
