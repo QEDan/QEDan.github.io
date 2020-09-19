@@ -141,16 +141,16 @@ Share information with your friends.
 
 Each of the services you choose to run will have its own documentation for how to configure it. One approach is to install and configure each of them on your webserver. Unfortunately, if there is a problem with your webserver down the road, or if you want to migrate to a different host, you will have to repeat this process, which can be difficult and frustrating.
 
-There is a tool called Docker which can make it much easier to manage the potentially complicated configuration process and make it more portable. With Docker, each program is packaged up along with an operating system and all the libraries required to run the program. These packages are called Docker Containers.
+There is a tool called [Docker](https://www.docker.com/) which can make it much easier to manage the potentially complicated configuration process and make it more portable. With Docker, each program is packaged up along with an operating system and all the libraries required to run the program. These packages are called D"Docker containers"
 
-Docker compose is a tool that makes it easier to have different docker containers that may interact with eachother. A common Docker Compose configuration for running two services at once, Service A and Service B, may be running the following 5 containers:
+[Docker compose](https://docs.docker.com/compose/) is a tool that makes it easier to have different docker containers that may interact with eachother. A common Docker Compose configuration for running two services at once, Service A and Service B, may be running the following 5 containers:
 * Container for Service A
 * Container for Service A's database
 * Container for Service B
 * Container for Service B's database
-* Container for a proxy server, e.g. nginx
+* Container for a proxy server, e.g. [nginx](https://en.wikipedia.org/wiki/Nginx)
 
-You will certainly want to run your web service using HTTPS rather than HTTP so that the information sent back and forth is encrypted. HTTPS connections require a security certificate. There is an organization called LetsEncrypt that will provide you with a free certificate. Unfortunately, this adds several tricky configuration steps on top of everything. But, it is worth it to have HTTPS protecting your service!
+You will certainly want to run your web service using [HTTPS](https://en.wikipedia.org/wiki/HTTPS) rather than HTTP so that the information sent back and forth is encrypted. HTTPS connections require a security certificate. There is an organization called [LetsEncrypt](https://letsencrypt.org/) that will provide you with a free certificate. Unfortunately, this adds several tricky configuration steps on top of everything. But, it is worth it to have HTTPS protecting your service!
 
 While all of this configuring of different services can be very challenging with many different sets of documentation to read, the Docker community has made everything considerably easier by releasing many popular web services as Docker images that can be easily configured, usually by editing a single configuration file. Many of these images can be found by searching for them on [Docker Hub](https://hub.docker.com/), a repository of Docker images.
 
@@ -173,15 +173,15 @@ Once you have services running somewhere on the web where you can connect to the
 
 ### Web browser
 
-The easiest way to access your services is through your web browser by navigating to the URL that your services uses for its web interface. 
+The easiest way to access your services is through your web browser, e.g. Firefox, by navigating to the URL that your services uses for its web interface. 
 
 ### Free software android apps
 
-F-Droid is an app store for Android with a focus on Free Software. It is the first place I go to look for apps that are compatible with my new web services. Usually, serching for the name of the service will produce several results. Generally, you should prefer apps that are popular and actively maintained. Some of the apps on the store may not have been updated in several months or years. The F-Droid store will show you information about how old the latest version is, as well as what sorts of permissions are required and if any aspect of the app doesn't respect your freedom.
+[F-Droid](https://f-droid.org/) is an app store for Android with a focus on Free Software. It is the first place I go to look for apps that are compatible with my new web services. Usually, serching for the name of the service will produce several results. Generally, you should prefer apps that are popular and actively maintained. Some of the apps on the store may not have been updated in several months or years. The F-Droid store will show you information about how old the latest version is, as well as what sorts of permissions are required and if any aspect of the app doesn't respect your freedom.
 
 ## Migrate your data from your existing services
 
-You now have all of your devices communicating with your new web services. But, they don't have your data yet. You'll have to migrate any data from your existing services to the new ones. This process will be different for each web service, so you'll have to search and see if there are any special tools or documented procedures to make the process easier. For example, if you set up TTRSS earlier, you can export your feeds and preferences as an OPML file from your old RSS reader and import it into TTRSS. Depending on your old and new service, you may not be lucky enough to have a tool for bulk data transfer. Unfortunately, interoperability is not necessarily a priority for many services.
+You now have all of your devices communicating with your new web services. But, they don't have your data yet. You'll have to migrate any data from your existing services to the new ones. This process will be different for each web service, so you'll have to search and see if there are any special tools or documented procedures to make the process easier. For example, if you set up TTRSS earlier, you can export your feeds and preferences as an [OPML file](https://en.wikipedia.org/wiki/OPML) from your old RSS reader and import it into TTRSS. Depending on your old and new service, you may not be lucky enough to have a tool for bulk data transfer. Unfortunately, interoperability is not necessarily a priority for many services.
 
 ## Maintain your new services
 
