@@ -1,7 +1,7 @@
 # Guide to Running Your Own Web Services
 
 ## What is a web service?
-For this article, a web service is any program that you would like to be able to connect to using the world-wide web. Some examples are email servers, file storage, photo galleries, etc.
+For this article, a web service is any program that you would like to be able to connect to using the world-wide web. Some examples are email servers, file storage, photo galleries, calendar, etc.
 
 ## Why run your own web services?
 
@@ -12,7 +12,7 @@ There are many reasons why you should run your own web services. For example:
 * Avoid trusting 3rd parties with privacy-sensitive data
 * To make more private, less intrusive options available to your close friends or broader community
 
-Recall the four freedoms you should expect to enjoy as a software user:
+Recall the [four freedoms](https://en.wikipedia.org/wiki/The_Free_Software_Definition#The_Four_Essential_Freedoms_of_Free_Software) you should expect to enjoy as a software user:
 * Use
     * can be used for any purpose and is free of restrictions such as licence expiry or geographic limitations
 * Study
@@ -36,15 +36,17 @@ This guide is intended to provide a general overview and some pointers to tools 
 
 ## Finding a webserver
 
-The first step is finding a computer to run your software. These options are listed from having the most control, to having the least control (but the most convenience):
+The first step is finding a [computer to run your software](https://en.wikipedia.org/wiki/Web_server). These options are listed from having the most control, to having the least control (but the most convenience). Each option will have its own costs, which I wont get into here.:
 * Purchase a computer and connect it to the internet using your ISP
-* Purchase a computer and host it in a colocation center
-* Rent access to a bare metal server in a datacenter
-* Rent access to a virtual machine in a datacenter
+* Purchase a computer and host it in a [colocation center](https://en.wikipedia.org/wiki/Colocation_centre)
+* Rent access to a [bare metal server](https://en.wikipedia.org/wiki/Bare-metal_server) in a datacenter (may be called "single-tenancy physical server" or "bare metal server")
+* Rent access to a virtual machine in a datacenter (usually called "Cloud Hosting" or "Virtual servers")
 * Use virtual machines from one of the large cloud providers (alphabetical order)
-    * Amazon Web Services
-    * Google Cloud
-    * Microsoft Azure
+    * [Amazon Web Services](https://aws.amazon.com/)
+    * [Google Cloud] (https://cloud.google.com/)
+    * [Microsoft Azure] (https://azure.microsoft.com/en-us/?cdn=disable)
+    
+Depending on what you plan to do with your server, you will want to consider how much bandwidth, disk space, memory, and computing power you'll need. 
     
 Is running your own webservice on Google Cloud just as bad as using Google's webservices (e.g. gmail, calendar, contacts, drive, etc.)? Maybe. But you'll enjoy more favourable terms and conditions as a cloud customer to control your data. You'll also have the ability to encrypt your data and control the keys so that Google doesn't have access to your unencrypted data. Even if your data is not encrypted, they are not able to wire up your cloud instance data to their surveillance infrastructure as easily. Using a large cloud provider can make the project much more accessible, and it can be done in a way the protects your privacy. But, you would be supporting and relying on the big tech companies. So, consider how it fits into your goals.
 
@@ -60,46 +62,80 @@ Provides:
 * File syncing and sharing similar to Google Drive, Dropbox, iCloud, etc.
 * Calendar (via plugin)
 * Contacts (via plugin)
+* Tasks (via plugin)
+* Notes (via plugin)
+* Photo galleries
+* RSS Reader (via plugin)
 
 ### RSS Feed Reading
 
-TTRSS
+RSS is great because it allows you to be in control over what you read. You subscribe to feeds that are created by your favourite websites, artists, authors, and other creatives. These feeds are consolidated in your feed reader where you can scan headlines of everything plublished to all feeds and decide what to read. You are in charge of content curation rather than some algorithm that's trying to earn money from your attention. 
+
+Nextcloud provides an RSS feed reader through its [news plugin](https://apps.nextcloud.com/apps/news).
+
+[Tiny Tiny RSS](https://tt-rss.org/) (aka TTRSS or TT-RSS) is another excellent choice.
+
 
 ### Music Streaming
 
-AirSonic
+Why put up with ads on music streaming sites, or monthly subscription fees? Why put up with restrictive terms of service and DRM? Stream the music you already own by running your own music streaming service.
+
+[AirSonic](https://airsonic.github.io/)
+[Ampache](http://ampache.org/demo.html)
 
 ### Videoconferencing
 
-Jitsi
+A global pandemic has made us all very reliant on videoconferencing tools. The most popular tools are proprietary, and we don't want to ask our friends, family, and coworkers to give up their privacy just to chat with us. Instead, consider running your own videoconferencing service!
+
+[Jitsi](https://jitsi.org/)
 
 ### Collaborative Documents
 
-Etherpad / Ethercalc / CryptPad
+Whether you want to edit your own documents on the cloud or collaborate with colleagues on the same document at the same time, there's tools for you.
+
+[Etherpad](https://etherpad.org/) - Collaboratively edited documents
+[Ethercalc](https://ethercalc.net/) - Collaboratively edited spreadsheets
+[CryptPad](https://cryptpad.fr/) - Collaboratively edited documents
 
 ### Text/log sharing
 
-PrivateBin
+These are tools for posting text files or log files online so that you can reference them in forum questions.
+
+[PrivateBin](https://privatebin.info/)
 
 ### Chat / Messaging
 
-XMPP / Matrix / Converse js
+Keep your messages private with these chat and messaging options.
+
+[XMPP](https://xmpp.org/)
+[Matrix](https://matrix.org/)
+[Converse js](https://conversejs.org/) - A web client for XMPP
 
 ### File sharing
 
-Lufi
+If you want to send a file to someone, sometimes its best to use a link that expires on its own so the file doesn't continue taking up space on the server.
+
+[Lufi](https://framagit.org/fiat-tux/hat-softwares/lufi)
+
 
 ### Web Search
 
-SearX
+Run your own web search server to protect your privacy, or to customize how the results are presented.
+
+[SearX](https://github.com/bauruine/searx/)
 
 ### Polls and Meeting scheduling
 
-Framadate
+Sometimes it's useful to collect opinions or schedule events using a poll.
+
+[Framadate](https://framadate.org/)
 
 ### Social Networks
 
-Mastodon / Diaspora
+Share information with your friends.
+
+[Mastodon](https://joinmastodon.org/) - Microblogging (like Twitter)
+[Diaspora](https://diasporafoundation.org/) - Social networking (like Facebook)
 
 ## Installing and Configuring Services with Docker
 
