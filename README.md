@@ -18,6 +18,7 @@ Dan is working as a data scientist in Vancouver.
 * [Machine Learning and AI for Interstellar Colonization](https://www.youtube.com/watch?v=0d-eM2FToZg&t=3084s) (2021-05-26)
 * [Kaggle Meetup: A Recipe for Training Neural Networks](https://www.youtube.com/watch?v=qajDVYLfeVg) (2019-06-14)
 * [Kaggle Meetup: Quora Insincere Questions Classification](https://www.youtube.com/watch?v=l7ZmviwSnXw) (2019-03-08)
+* [Python for high performance and scientific computing](https://www.youtube.com/watch?v=k_Z8REQo3Ks) (2013-04-07)
 
 ## Contact
 
