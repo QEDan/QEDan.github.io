@@ -25,3 +25,4 @@ Dan is working as a data scientist in Vancouver.
 * [LinkedIn](https://www.linkedin.com/in/mazurdan/)
 * [Twitter](https://twitter.com/QEDanMazur)
 * [Github](https://github.com/QEDan)
+* <a rel="me" href="https://mastodon.online/@QEDan">Mastodon</a>
