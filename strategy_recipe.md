@@ -158,7 +158,54 @@ After going through their prioritization exercise, the data scientists at AcmeMe
 
 Because of the prioritization exercise, they realize that choosing meals that will delight the customer is a key technology that will enable everything else. They don't have the data that they need for a proper recommendation system yet, but they decide that a good approach is to build rules-based tool where the user can input a selection of ingredients and then choose from a selection of recipes. This tool will be valued by the customer immediately, but it can also grow into a more sophisticated recommender over time. As a bonus, it will help collect data about what ingredients the customer has in their kitchen, as well as what their food preferences are.
 
-## 7. Ethics and Privacy
+## 7. Using the dependency graph and priorities to drive the roadmap
+
+The dependency graph and prioritization can help you solve strategy problems so that you can make a project roadmap. Let's consider some examples.
+
+### Strategy Problem 1
+
+Which capability should we prioritize, Capability A, Capability B, or divide our resources between both?
+
+![A dependency graph showing Capability A as green and Capability B as red](images/greedyvsglobal_simple_benefit.png)
+In this figure, the colour corresponds to the **benefit** of developing each capability. Green is high benefit, yellow is medium benefit, and red is low benefit.
+
+### Answer
+
+In this case, it seems like Capability A should have higher priority since the benefit is higher. But, this diagram is very simple and may not capture all considerations.
+
+### Strategy Problem 2
+
+Which capability should we prioritize in the following graph? Capability A? Capability B? Half A, Half B? Note the similarities and differences compared to the previous question.
+
+![A dependency graph showing Capability A as green and Capability B as red. A number of green capabilities depend on Capability B](images/greedyvsglobal_benefit.png)
+In this figure, the colour corresponds to the **benefit** of developing each capability. Green is high benefit, yellow is medium benefit, and red is low benefit.
+
+### Answer
+
+This problem is not a clear-cut as the first problem. On one hand, Capability A is a high benefit project that we can work on right away to have a big immediate impact on our product. On the other hand, Capability B is an enabling technology that allows us to start work on a number of other high benefit capabilities. 
+
+This problem highlights the difference between greedy strategies and global strategies. In the greedy strategy, we always invest our resources in the highest benefit project that we can deliver right away. In a global strategy, we consider steps we can take today toward a longer-term vision that may have much higher benefit overall, even if the immediate benefits are smaller. Without the dependency graph, it is difficult to reason about global strategies and harder to make a case to get resources for low benefit but strategically important initiatives.
+
+### Strategy Problem 3
+
+What data should we prioritize collecting?
+
+![A dependency graph showing a high-value capability and a low-value capability. Both depend on data that we have, but the high-value capability depends on data that we don't have](images/datavalue_benefit.png)
+In this figure, the colour corresponds to the **benefit** of each data set. Green is high benefit, yellow is medium benefit, and red is low benefit.
+
+![The same dependency graph as above is shown. In this version, we see that the data we don't have has a high cost to acquire. Both capabilities have medium cost to develop.](images/datavalue_cost.png)
+In this figure, the colour corresponds to the **cost** of acquiring each data set. Green is low cost, yellow is medium cost, and red is high cost.
+
+### Answer
+
+In this problem, a high-value capability is blocked by high-cost data that we don't have. We may want to prioritize a product feature for the sake of data collection to unblock the high-value capability.
+
+This situation can be challenging for organizations. It is a good test of an organizations commitment to data science strategy. In general, data scientists do not collect the data, the product does. Collecting new data usually requires new product features to be developed and, in some cases, some additional friction to be placed on the users. For example, users might be asked to fill out additional information in a form in order to collect the needed data. Many product managers will not want to prioritize this work unless they have a deep understanding of the data science strategy. 
+
+One of the most underrated ways that data scientists can bring value to the business is for them to be directly involved in shaping the organization's data generating processes. In other words, they should be directly involved in product decisions that impact what data the organization is collecting, and how it is collected. Unfortunately, many organizations put data scientists downstream of product and give them very little influence over the data collection itself. This severely limits the impact they can have on the product.
+
+
+## 8. Ethics and Privacy
 
 Sometimes the ethical implications of building technology are not clear from the outset. But, it is best to start thinking about what can go wrong as early in the process as possible. This will set the tone for ethical thinking from your team throughout all phases of research and development.
 
@@ -172,7 +219,7 @@ The data scientists at AcmeMealCo decide that they will need to collect data tha
 
 There are also ethical considerations when recommending meals. Preparing a meal that contains an allergen could lead to serious medical consequences. Also, it would be offensive to some users if meal recommendations were strongly influenced by racial stereotypes rather than the customers' actual preferences.
 
-## 8. Communicate and Iterate
+## 9. Communicate and Iterate
 
 It is not good enough to just understand the data science strategy yourself. The most important step is to communicate it. 
 
