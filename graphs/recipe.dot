@@ -1,0 +1,26 @@
+digraph G {
+    rankdir=LR
+    RATINGS [label="Meal Ratings"]
+    IMPLEMENTS [label="Kitchen Implements"]
+    INGREDIENTS [label="Ingredients"]
+    TIMING [label="Meal Timing"]
+
+    MEALREC [label="Meal recommender" shape=box]
+    RECIPESELECT [label="Recipe Selector" shape=box]
+    IMPLOCATOR [label="Implement Locator" shape=box]
+    IMPFETCHER [label="Implement Fetcher" shape=box]
+    INGLOCATOR [label="Ingredient Locator" shape=box]
+    INGFETCHER [label="Ingredient Fetcher" shape=box]
+    INGPREP [label="Ingredient Preparation" shape=box]
+    ITEMFETCHER [label="Item locator/fetcher" shape=box]
+    UNKNOWN [label="..." shape=box]
+
+    AUTOPREP [label="fully automated meal preparation and serving robot"shape=box]
+
+    RATINGS -> MEALREC -> RECIPESELECT -> AUTOPREP
+    IMPLEMENTS -> IMPLOCATOR -> IMPFETCHER -> ITEMFETCHER -> AUTOPREP
+    INGREDIENTS -> INGLOCATOR -> INGFETCHER -> ITEMFETCHER
+    INGREDIENTS -> INGPREP -> AUTOPREP
+    TIMING -> AUTOPREP
+    UNKNOWN -> AUTOPREP
+}

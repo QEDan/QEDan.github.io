@@ -13,12 +13,12 @@ Answering these questions allows data scientists to develop useful data products
 
 The data science strategy is not concerned with implementation details. At the strategy level, we are not interested in what technologies we will use for data warehousing, data pipelines, serving models, etc. We are not concerned with what types of modelling approaches will be tried, what hardware will be used for training, or what software frameworks will be used to ensure reproducibility. Those are all important things to figure out, but the strategic questions above should be figured out first, and then implementation strategies can be developed to support the overall strategy.
 
-This recipe is meant to be extremely flexible, so it's discussed in abstract terms. To make things more concrete, we will imagine applying this strategy to a hypothetical company, called AcmeMealCo, whose mission is to make preparing meals easier for their customers. 
+This recipe is meant to be extremely flexible, so it's discussed in abstract terms. To make things more concrete, we will imagine applying this strategy to a hypothetical company, called AcmeMealCo, whose mission is to make preparing meals easier for their customers.
 
 The type of business to use as an example became extremely obvious after I used the word 'recipe' for the title.
 
 ## Terminology
-I use very broad terminology because this recipe can be applied to very broad situations. 
+I use very broad terminology because this recipe can be applied to very broad situations.
 
 * Data Science - The discipline within the organization that makes data products
 * Data products - Any artifact that uses one or more data sources as an input and aims to make that data more usable toward a specific area of decision making. A data product may aim to automate a decision, or it may aim to assist a human decision maker. Examples include graphs, calculated values, dashboards, analytic models, statistical models, machine learning models, artificial intelligence systems, etc.
@@ -26,7 +26,7 @@ I use very broad terminology because this recipe can be applied to very broad si
 
 
 ## 1. Clarify the goals and scope
-What is the business trying to accomplish and how can data science help? What is the vision? In what area are you planning to innovate using data science? Who will benefit and how? 
+What is the business trying to accomplish and how can data science help? What is the vision? In what area are you planning to innovate using data science? Who will benefit and how?
 What can your organization realistically achieve assuming a best case scenario?
 
 It is also important to be explicit about the scope and the types of problems that your organization does not want to solve. This will help to add focus to the strategy and prevent later scope-creep that will take resources away from achieving the vision.
@@ -39,7 +39,7 @@ This is the long-term vision for the company, but it is a long way off. Right no
 
 One thing that is out-of-scope for AcmeMealCo is acquiring groceries for the customer. They will eventually include tools for preparing a grocery list and offering third-party integrations with grocery delivery services. But, incorporating anything that happens outside of the customer's home adds too much complexity. We will assume that the customer has a well-stocked kitchen and pantry.
 
-AcmeMealCo will also assume that the entire household can be treated like a single individual in terms of preferences, dietary needs. Everyone in the house eats the same food, at the same time, and we only need to scale up the amounts depending on the number of people. 
+AcmeMealCo will also assume that the entire household can be treated like a single individual in terms of preferences, dietary needs. Everyone in the house eats the same food, at the same time, and we only need to scale up the amounts depending on the number of people.
 
 
 ## 2. Identify all of the decisions
@@ -53,7 +53,7 @@ AcmeMealCo arranges some sessions with their customers where they shadow them as
 * What kind of food they want to eat
 * Which recipe to use
 * Where to find suitable bowls, knives, mixers, and other implements
-* Where to find each ingredient 
+* Where to find each ingredient
 * How to properly prepare each ingredient
 	* Washing
 	* Peeling
@@ -79,7 +79,7 @@ AcmeMealCo identifies several categories where data products could support a cus
 
 What data sources will (probably) be needed to create data products that will help with each capability listed in step 3?
 
-It is okay if you don't know how to obtain all of the data sources. If they are potentially interesting, it is useful to include them. If you do have ideas about how to obtain the data, write those down. 
+It is okay if you don't know how to obtain all of the data sources. If they are potentially interesting, it is useful to include them. If you do have ideas about how to obtain the data, write those down.
 
 Some ways that organizations obtain data are:
 * Through user interactions or telemetry as the product is used
@@ -106,7 +106,7 @@ Starting with the 'How to decide what to make' category, the data scientists at 
 * List of ingredients available in the kitchen
 * List of cooking tools available in the kitchen
 * Calendar data (e.g. to understand how much time there is to prepare the meal, and how much time their is to eat the meal)
-* etc. 
+* etc.
 
 The data scientists repeat this process for all of the categories they identified in Step 3.
 
@@ -125,6 +125,8 @@ The dependency graph includes
 Using graphviz software and a dot file, the data scientists at AcmeMealCo are able to make a visualization of the dependencies between all of the data products and data sources that they identified in the previous steps. Some data sources are needed for quite a few data products, while other data sources are only needed for a single data product. Some of the data products depend on other data products, such as a weekly meal planner data product that would benefit from the output of an individual meal recommender data product.
 
 Some of the data products on the graph are incredibly abstract and far-off. In particular, everything culminates in an ultimate data product called "fully automated meal preparation and serving robot". It's okay that we don't know how to build that yet. The dependency graph helps us to understand the simpler data products that will go into the more complex ones. When it comes time for the data scientists to tackle the more complex data products, time can be taken to break down the very abstract form into something they can build. It is better to keep things that you don't know how to do more abstract for now.
+
+![A dependency graph for data sources and capabilities for AcmeMealCo](images/recipe.png)
 
 ## 6. Prioritize Analytic Models and Data Sources
 
@@ -148,11 +150,19 @@ For each data product we need to understand:
 	* Is it 'table stakes' for your product to compete in the market?
 	* Is it mostly an enabling technology that will be used to create more valuable data products in the future?
 
-Note that it can be difficult to disentangle the business value of a data product and the data source(s) that it depends on. Similarly, it can be difficult to disentangle the implementation feasibility of a data product and the difficulty of obtaining a suitable data source used to develop it. For now, try your best to think of these separately. In reality, everything is interconnected and interdependent. Don't get too tangled up in details. We are making a simplified model to guide our thinking. 
+Note that it can be difficult to disentangle the business value of a data product and the data source(s) that it depends on. Similarly, it can be difficult to disentangle the implementation feasibility of a data product and the difficulty of obtaining a suitable data source used to develop it. For now, try your best to think of these separately. In reality, everything is interconnected and interdependent. Don't get too tangled up in details. We are making a simplified model to guide our thinking.
 
 It may help to give feasibility and value measures a numerical value, such as a Likert scale rating. This way, we can make sorted lists or visualizations that will help us to understand the relative priorities. We can also use numerical values as a key to add colour to our dependency graph so it is easier to visualize the strategic priority of different nodes in the graph.
 
 ### Example
+
+AcmeMealCo uses colours on their dependency graph to indicate the feasibility and business value. For example, their graph for feasibility uses red for the most difficult capabilities to build or data sources to collect, yellow for moderate difficulty, and green for the easiest difficulty.
+
+![AcmeMealCo's dependency graph with colours representing feasibility](images/recipe_feasibility.png)
+
+Similarly, they create another coloured graph to show the business value. Here, green represents the most business value, yellow a moderate amount of value, and red represents lower business value capabilities and data sources.
+
+![AcmeMealCo's dependency graph with colours representing business value](images/recipe_benefit.png)
 
 After going through their prioritization exercise, the data scientists at AcmeMealCo identify that getting meal ratings from their customers is of very high business value and is something they can easily collect in an early version of their meal-planning phone app. So, they decide that that is the highest priority dataset to collect first.
 
@@ -182,7 +192,7 @@ In this figure, the colour corresponds to the **benefit** of developing each cap
 
 ### Answer
 
-This problem is not a clear-cut as the first problem. On one hand, Capability A is a high benefit project that we can work on right away to have a big immediate impact on our product. On the other hand, Capability B is an enabling technology that allows us to start work on a number of other high benefit capabilities. 
+This problem is not a clear-cut as the first problem. On one hand, Capability A is a high benefit project that we can work on right away to have a big immediate impact on our product. On the other hand, Capability B is an enabling technology that allows us to start work on a number of other high benefit capabilities.
 
 This problem highlights the difference between greedy strategies and global strategies. In the greedy strategy, we always invest our resources in the highest benefit project that we can deliver right away. In a global strategy, we consider steps we can take today toward a longer-term vision that may have much higher benefit overall, even if the immediate benefits are smaller. Without the dependency graph, it is difficult to reason about global strategies and harder to make a case to get resources for low benefit but strategically important initiatives.
 
@@ -200,7 +210,7 @@ In this figure, the colour corresponds to the **cost** of acquiring each data se
 
 In this problem, a high-value capability is blocked by high-cost data that we don't have. We may want to prioritize a product feature for the sake of data collection to unblock the high-value capability.
 
-This situation can be challenging for organizations. It is a good test of an organizations commitment to data science strategy. In general, data scientists do not collect the data, the product does. Collecting new data usually requires new product features to be developed and, in some cases, some additional friction to be placed on the users. For example, users might be asked to fill out additional information in a form in order to collect the needed data. Many product managers will not want to prioritize this work unless they have a deep understanding of the data science strategy. 
+This situation can be challenging for organizations. It is a good test of an organizations commitment to data science strategy. In general, data scientists do not collect the data, the product does. Collecting new data usually requires new product features to be developed and, in some cases, some additional friction to be placed on the users. For example, users might be asked to fill out additional information in a form in order to collect the needed data. Many product managers will not want to prioritize this work unless they have a deep understanding of the data science strategy.
 
 One of the most underrated ways that data scientists can bring value to the business is for them to be directly involved in shaping the organization's data generating processes. In other words, they should be directly involved in product decisions that impact what data the organization is collecting, and how it is collected. Unfortunately, many organizations put data scientists downstream of product and give them very little influence over the data collection itself. This severely limits the impact they can have on the product.
 
@@ -221,7 +231,7 @@ There are also ethical considerations when recommending meals. Preparing a meal 
 
 ## 9. Communicate and Iterate
 
-It is not good enough to just understand the data science strategy yourself. The most important step is to communicate it. 
+It is not good enough to just understand the data science strategy yourself. The most important step is to communicate it.
 
 Data science often requires buy-in from the entire organization. Sometimes, considerable change is needed from the organization to enable a new data science strategy. You will have to work with other leaders throughout the organization to build cross-organizational support for the data science strategy.
 
@@ -231,7 +241,7 @@ Start by making a data science strategy document. Keep it short and focus only o
 
 Ask the senior leaders and other stakeholders in the company for feedback. When everyone is happy with the document, ask the senior leaders to give the document an official status within the organization.
 
-Next, give a talk to as broad an audience as possible to explain the data science strategy to everyone. Make it clear to each group in attendance how to use the Data Science Strategy document to help guide their decisions within their own domain. 
+Next, give a talk to as broad an audience as possible to explain the data science strategy to everyone. Make it clear to each group in attendance how to use the Data Science Strategy document to help guide their decisions within their own domain.
 
 Every time you advocate for data science outside the data science team, it's an opportunity to remind your colleagues about the company's official data science strategy and how their work can support that strategy. If you have conflict with colleagues over which projects should be prioritized, try to steer to conversation toward the strategy document and whether they agree or disagree with the assumptions made in developing it. Whatever the resolution to the conflict ends up being, working through the conflict should help to strengthen and reinforce the strategy.
 
