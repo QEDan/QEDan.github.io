@@ -14,9 +14,9 @@ Dan is in Vancouver, BC.
 * [Guide to running your own web services](running_webservices.md)
 * [A Recipe For Data Science Strategy](strategy_recipe.md)
 * Fooling Fintech AIs
-  * [Part I - Introduction](https://blog.poweredbygrow.com/fooling-fintech-ais-945db04a5e51)
-  * [Part II - How to Fool the Machines](https://blog.poweredbygrow.com/part-2-how-to-fool-the-machines-2cb0a3914eb0)
-  * [Part III - Protecting your Business from Adversarial Users](https://blog.poweredbygrow.com/fooling-fintech-ais-part-3-protecting-your-business-from-adversarial-users-5c56a91b78c9)
+  * [Part I - Introduction](https://medium.com/grow-blog/fooling-fintech-ais-945db04a5e51)
+  * [Part II - How to Fool the Machines](https://medium.com/grow-blog/part-2-how-to-fool-the-machines-2cb0a3914eb0)
+  * [Part III - Protecting your Business from Adversarial Users](https://medium.com/grow-blog/fooling-fintech-ais-part-3-protecting-your-business-from-adversarial-users-5c56a91b78c9)
 
 ## Presentations
 
