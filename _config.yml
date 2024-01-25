@@ -1,2 +1,2 @@
 theme: jekyll-theme-tactile
-exclude: slides/*
+keep_files: [slides/*]
