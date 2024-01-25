@@ -1,8 +1,9 @@
 *~
 .~*#
-*.html
+slides/*.html
 *.docx
 *.tar.gz
 *.tar.gz.1
 *.bak
 slides/reveal.js
+strategy
