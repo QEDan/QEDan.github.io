@@ -1,4 +1,5 @@
 SLIDETYPE=revealjs  # revealjs, dzslides, slidy
+PANDOCOPTS=-sV revealjs-url=./reveal.js -V theme=night
 
 SRCS := $(wildcard *.md)
 PRESS := ${SRCS:%.md=%.html}
@@ -9,7 +10,7 @@ reveal.js:
 	mv reveal.js-master/ reveal.js
 
 ${PRESS}: $(SRCS) reveal.js
-	pandoc -t ${SLIDETYPE} $< -o $@ -sV revealjs-url=./reveal.js
+	pandoc -t ${SLIDETYPE} $(@:.html=.md) -o $@ $(PANDOCOPTS)
 
 all: ${PRESS}
 
