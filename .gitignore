@@ -4,5 +4,7 @@
 *.tar.gz
 *.tar.gz.1
 *.bak
-slides/reveal.js
+slides/reveal.js/.github
+slides/reveal.js/examples
+slides/reveal.js/test
 strategy
