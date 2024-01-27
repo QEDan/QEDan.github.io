@@ -1,5 +1,5 @@
 SLIDETYPE=revealjs  # revealjs, dzslides, slidy
-PANDOCOPTS=-sV revealjs-url=./reveal.js -V theme=night
+PANDOCOPTS=-sV revealjs-url=./reveal.js -V theme=moon --slide-level=2
 
 SRCS := $(wildcard *.md)
 PRESS := ${SRCS:%.md=%.html}

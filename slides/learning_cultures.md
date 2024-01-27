@@ -8,6 +8,7 @@
 * Structured Discussion (~60 min)
 * Takeaways and Action Items (~15 min)
 
+
 ## It's Like Coding In The Dark
 
 [The Need For Learning Cultures Within Coding Teams](https://www.catharsisinsight.com/_files/ugd/fce7f8_2a41aa82670f4f08a3e403d196bcc341.pdf)
@@ -44,6 +45,10 @@ with all the lights off.”
 
 ![](images/learning_cultures/learning-debt.png)
 
+## Learning Debt
+
+When learning is **necessary but discouraged**, so learning becomes hidden
+
 
 ## Recommendations
 
@@ -63,4 +68,26 @@ Was the work celebrated?
 
 ## When have you felt lonely or unsupported while working?
 
-## Takeaways
+## What was your best or worst experience onboarding at a new team/company?
+
+## What was your best or worst experience collaborating on a problem?
+
+## How are decisions, documentation, and knowledge shared in your organizations?
+
+What works best?
+
+## When have you received helpful feedback outside of formal performance reviews?
+
+## Have you made a mistake at work? What happened?
+
+## Has it ever been really hard/easy to ask for help?
+
+## When have you met with hypocrisy around learning?
+
+It's okay to make mistakes, but it's not okay to make that mistake.
+
+## When has someone tried to improve the learning culture, but faced pushback?
+
+## When has your learning work been the most visible or invisible?
+
+## Takeaways and Action Items
