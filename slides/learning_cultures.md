@@ -20,6 +20,12 @@ Catherine Hicks, Catharsis Consulting, 2022
 * Learning by testing conceptual mental models with tangible examples
 * Goal is to scaffold understanding until confident you can contribute
 
+## Invisible Work
+
+* Refactoring / technical debt
+* Glue work (see: [Tanya Reilly - https://noidea.dog/glue](https://noidea.dog/glue))
+*
+
 ## Code Reviews Don't Feel Safe
 
 * Reputation threat
@@ -57,6 +63,16 @@ When learning is **necessary but discouraged**, so learning becomes hidden
 * Make documentation and collaboration "count"
 * Celebrate collaborative support
 * Make the costs of learning debt visible
+
+## "Being Glue" Recommendations
+
+[Tanya Reilly - https://noidea.dog/glue](https://noidea.dog/glue)
+* Learn deliberately
+* Learn at work
+* Be public about what you are learning
+* Watch out for learning opportunities. Don't automatically do things for people.
+* Ensure no invisible/glue work on job ladder
+
 
 ## Discussion Questions
 

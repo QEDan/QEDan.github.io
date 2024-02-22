@@ -1,22 +1,22 @@
-# Dan Mazur
+<!-- # Dan Mazur
 
 ## Background
 
 Dan is a machine learning engineer and recovering theoretical astrophysicist with profound love for statistics, research computing, empirical reasoning, and learning.
 
-Dan is in Vancouver, BC.
+Dan is in Vancouver, BC. -->
 
 ## Articles
 
-* [Agile For Research](agile_research.md)
-* [Collaborating on Data Science Models](modeling_collaboration.md)
-* [Statement of Data Science Philosophy](philosophy.md)
-* [Guide to running your own web services](running_webservices.md)
-* [A Recipe For AI Strategy (ODSC Featured Article)](https://opendatascience.com/a-recipe-for-ai-strategy/)
+* [A Recipe For AI Strategy](https://opendatascience.com/a-recipe-for-ai-strategy/) (ODSC Featured Article)
 * Fooling Fintech AIs (Grow Blog)
   * [Part I - Introduction](https://medium.com/grow-blog/fooling-fintech-ais-945db04a5e51)
   * [Part II - How to Fool the Machines](https://medium.com/grow-blog/part-2-how-to-fool-the-machines-2cb0a3914eb0)
   * [Part III - Protecting your Business from Adversarial Users](https://medium.com/grow-blog/fooling-fintech-ais-part-3-protecting-your-business-from-adversarial-users-5c56a91b78c9)
+* [Agile For Research](agile_research.md)
+* [Collaborating on Data Science Models](modeling_collaboration.md)
+* [Statement of Data Science Philosophy](philosophy.md)
+* [Guide to running your own web services](running_webservices.md)
 
 ## Presentations
 
@@ -27,7 +27,7 @@ Dan is in Vancouver, BC.
 
 ## Open Source
 
-* [Links Clustering](https://github.com/QEDan/links_clustering) - Python implementation of the [Links online clustering algorithm](https://arxiv.org/abs/1801.10123). Unlike most clustering algorithms, this one predicts cluster membership as it goes without needing to see the entire data set.
+* [Links Clustering](https://github.com/QEDan/links_clustering) - Python implementation of the [Links online clustering algorithm](https://arxiv.org/abs/1801.10123). Unlike most clustering algorithms, this one predicts cluster membership as it goes without needing to see the entire data set. Featured on [paperswithcode.com](https://paperswithcode.com/paper/links-a-high-dimensional-online-clustering).
 * [DLCheck](https://github.com/QEDan/DLCheck) - A tool for automatically discovering training problems in PyTorch Lightning Deep Learning models. Implements checks from [TFCheck](https://arxiv.org/abs/1909.02562) and [Deep Diagnosis](https://arxiv.org/abs/2112.04036).
 * [hwc - The Hello World Compiler](https://github.com/QEDan/hwc) - A compiler that takes input source code written in any programming language and compiles it into a working program with the desired features. It is useful for accelerating development of new programming languages, or for writing software using languages you don't understand (yes, it's a joke).
 * Bug fixes and features
