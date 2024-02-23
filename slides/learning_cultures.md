@@ -1,6 +1,6 @@
 % Learning Cultures in Tech
 % Dan Mazur, PhD
-% www.danmazur.ca/slides/learning_cultures.html
+% [www.danmazur.ca/slides/learning_cultures.html](https://www.danmazur.ca/slides/learning_cultures.html)
 
 ## Outline
 
@@ -15,14 +15,17 @@
 
 Catherine Hicks, Catharsis Consulting, 2022
 
+Currently: [Developer Success Lab | VP of Research Insights, Pluralsight](https://www.linkedin.com/in/drcathicks/)
+
 ## Active Learning Is Invisible
 
 * Learning by testing conceptual mental models with tangible examples
 * Goal is to scaffold understanding until confident you can contribute
 
-## Invisible Work
+## Other Invisible Work
 
 * Refactoring / technical debt
+* "Non-promotable tasks"
 * Glue work (see: [Tanya Reilly - https://noidea.dog/glue](https://noidea.dog/glue))
 
 ## Code Reviews Don't Feel Safe
@@ -36,6 +39,14 @@ Catherine Hicks, Catharsis Consulting, 2022
 * Back to coding alone
 * Minimal Support
 * Hide your learning work
+
+## Learning vs. Performance
+
+**Performance culture**
+
+* Only "final" outputs matter
+* Mistakes are not okay. They get hidden.
+* Seems like people are "born" good/bad performers
 
 ## Coding in the dark
 
@@ -60,12 +71,13 @@ When learning is **necessary but discouraged**, so learning becomes hidden
 * Involve people in defining "success"
 * Encourage developmental feedback
 * Make documentation and collaboration "count"
-* Celebrate collaborative support
+* Celebrate collaborative support. It counts as "technical".
 * Make the costs of learning debt visible
 
 ## "Being Glue" Recommendations
 
 [Tanya Reilly - https://noidea.dog/glue](https://noidea.dog/glue)
+
 * Learn deliberately
 * Learn at work
 * Be public about what you are learning
@@ -75,9 +87,7 @@ When learning is **necessary but discouraged**, so learning becomes hidden
 
 ## Discussion Questions
 
-## Stories that demonstrate that active learning is real work
-
-Was the work celebrated?
+## When was your active learning work (not) celebrated?
 
 ## When have you felt safe/unsafe during a code review?
 
@@ -105,4 +115,4 @@ It's okay to make mistakes, but it's not okay to make that mistake.
 
 ## When has your learning work been the most visible or invisible?
 
-## Takeaways and Action Items
+## Takeaways and Action Items?
