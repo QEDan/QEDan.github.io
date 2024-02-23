@@ -24,7 +24,6 @@ Catherine Hicks, Catharsis Consulting, 2022
 
 * Refactoring / technical debt
 * Glue work (see: [Tanya Reilly - https://noidea.dog/glue](https://noidea.dog/glue))
-*
 
 ## Code Reviews Don't Feel Safe
 
