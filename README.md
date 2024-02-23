@@ -20,6 +20,7 @@ Dan is in Vancouver, BC. -->
 
 ## Presentations
 
+* [Improving our Teams' Learning Cultures](https://www.youtube.com/watch?v=5tAnMRAbwY0) + [slides](http://www.danmazur.ca/slides/learning_cultures.html) (2024-02-23)
 * [Machine Learning and AI for Interstellar Colonization](https://www.youtube.com/watch?v=0d-eM2FToZg&t=3084s) (2021-05-26)
 * [Kaggle Meetup: A Recipe for Training Neural Networks](https://www.youtube.com/watch?v=qajDVYLfeVg) (2019-06-14)
 * [Kaggle Meetup: Quora Insincere Questions Classification](https://www.youtube.com/watch?v=l7ZmviwSnXw) (2019-03-08)
