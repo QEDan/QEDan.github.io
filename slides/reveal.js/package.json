@@ -41,7 +41,7 @@
     "colors": "^1.4.0",
     "core-js": "^3.33.1",
     "fitty": "^2.3.7",
-    "glob": "^10.3.10",
+    "glob": "^10.5.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
@@ -54,13 +54,24 @@
     "marked": "^4.3.0",
     "node-qunit-puppeteer": "^2.1.2",
     "qunit": "^2.20.0",
-    "rollup": "^4.1.5",
+    "rollup": "^4.22.4",
     "sass": "^1.69.5",
     "yargs": "^17.7.2"
   },
   "overrides": {
     "chokidar": "3.5.3",
-    "glob-parent": "6.0.2"
+    "glob-parent": "6.0.2",
+    "braces": "^3.0.3",
+    "ws": "^8.17.1",
+    "send": "^0.19.0",
+    "serve-static": "^1.16.0",
+    "serialize-javascript": "^6.0.2",
+    "tar-fs": "^2.1.2",
+    "tmp": "^0.2.4",
+    "js-yaml": "^4.1.1",
+    "qs": "^6.14.1",
+    "lodash": "^4.17.23",
+    "minimatch": "^5.1.8"
   },
   "browserslist": "> 2%, not dead",
   "eslintConfig": {
