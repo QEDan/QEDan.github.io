@@ -1,3 +1,10 @@
+---
+layout: default
+title: Data Science Philosophy
+---
+
+{% include nav.html %}
+
 # Statement of Data Science Philosophy
 
 Within some professions, especially teaching, it is normal to write one's reflections on the 

@@ -1,3 +1,10 @@
+---
+layout: default
+title: A Recipe For AI Strategy
+---
+
+{% include nav.html %}
+
 # A Recipe For AI Strategy
 
 This is a recipe for developing a strategy for incorporating AI into products. An AI strategy is a framework that will help the organization understand what data-driven projects and data sources are the most valuable to the organization, and how to prioritize them to build toward their product vision over time.

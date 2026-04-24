@@ -1,3 +1,10 @@
+---
+layout: default
+title: Guide to Running Your Own Web Services
+---
+
+{% include nav.html %}
+
 # Guide to Running Your Own Web Services
 
 ## What is a web service?

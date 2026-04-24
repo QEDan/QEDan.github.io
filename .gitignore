@@ -8,3 +8,9 @@ slides/reveal.js/.github
 slides/reveal.js/examples
 slides/reveal.js/test
 strategy
+
+# Jekyll defaults
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/

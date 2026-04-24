@@ -1,3 +1,10 @@
+---
+layout: default
+title: Data Science Modeling Collaboration
+---
+
+{% include nav.html %}
+
 # Data Science Modeling Collaboration
 
 Guidelines for effective collaboration when multiple data scientists are collaborating to develop a single model.

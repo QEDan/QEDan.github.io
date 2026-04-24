@@ -1,3 +1,10 @@
+---
+layout: default
+title: Agile For Research
+---
+
+{% include nav.html %}
+
 # Agile For Research Work
 
 [Agile](https://en.wikipedia.org/wiki/Agile_software_development) refers to a philosophy for managing software projects. 
