@@ -4,15 +4,12 @@ layout: default
 
 {% include nav.html %}
 
-<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
-  <img src="https://via.placeholder.com/150" alt="Dan Mazur" style="border-radius: 50%; width: 150px; height: 150px; border: 3px solid #eee;">
-  <div>
-    <h1 style="margin-bottom: 0;">Dan Mazur, PhD</h1>
-    <p style="font-size: 1.2em; color: #666;">Machine Learning Engineer | Researcher | Speaker</p>
-  </div>
+<div style="margin-bottom: 30px;">
+  <h1 style="margin-bottom: 0;">Dan Mazur, PhD</h1>
+  <p style="font-size: 1.2em; color: #666;">Machine Learning Engineer | Data Scientist | Researcher </p>
 </div>
 
-Dan is a machine learning engineer and recovering theoretical astrophysicist with a profound love for statistics, research computing, empirical reasoning, and learning. Based in Vancouver, BC, he specializes in building robust, interpretable, and production-ready AI systems.
+Dan is a machine learning engineer and lapsed theoretical astrophysicist with a profound love for statistics, research computing, empirical reasoning, and learning. Based in Vancouver, BC, he specializes in transforming recent research into production-ready AI systems.
 
 ---
 
