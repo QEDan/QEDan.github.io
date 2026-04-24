@@ -7,3 +7,13 @@ description: Personal website of Dan Mazur, PhD. Dan is a machine learning engin
 
 keep_files: [slides/*]
 google_analytics: G-TWEE1B2MEN
+
+exclude:
+  - vendor/
+  - node_modules/
+  - slides/reveal.js/node_modules/
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - README.md
+  - LICENSE

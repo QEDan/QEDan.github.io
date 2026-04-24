@@ -1,3 +1,6 @@
+---
+---
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 $body-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -19,10 +22,15 @@ nav {
 }
 
 nav a {
+  display: inline-block;
   margin-right: 25px;
   text-decoration: none;
   font-weight: 600;
   color: #0366d6;
+}
+
+nav a:last-child {
+  margin-right: 0;
 }
 
 nav a:hover {
