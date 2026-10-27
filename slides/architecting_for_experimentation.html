@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Dan Mazur, PhD">
+  <title>Architecting for Experimentation</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="./reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="./reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="./reveal.js/dist/theme/moon.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Architecting for Experimentation</h1>
+  <p class="author">Dan Mazur, PhD</p>
+  <p class="date">Discussion for AI &amp; Machine Learning Architects</p>
+</section>
+
+<section class="slide level2">
+
+<style>
+:root {
+  --r-main-font-size: 32px;
+  --r-heading2-size: 1.75em;
+  --r-block-margin: 14px;
+}
+
+.reveal #title-slide::after {
+  content: "© Dan Mazur · Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)";
+  display: block;
+  margin-top: 1.5em;
+  font-size: 0.45em;
+}
+</style>
+</section>
+<section id="a-working-session-not-a-lecture" class="slide level2">
+<h2>A Working Session, Not a Lecture</h2>
+<p><strong>The central question:</strong> How can architecture keep the business problem dependable while the ML solution is still being discovered?</p>
+<ul>
+<li>Audience: AI and Machine Learning Architects at a consulting firm</li>
+<li>Aim: leave with a boundary and interface you can explain to a client team</li>
+</ul>
+</section>
+<section id="the-architectural-claim" class="slide level2">
+<h2>The Architectural Claim</h2>
+<p>Machine learning adds a kind of change that architecture must make room for: important solution choices are discovered through experiments, not fully planned in advance.</p>
+<p><strong>Architectural aim:</strong> keep the problem and its deployment context stable enough to support fast experiments; keep experimental solution details replaceable without forcing changes downstream.</p>
+</section>
+<section id="first-find-the-boundary" class="slide level2">
+<h2>First, Find the Boundary</h2>
+<p><img data-src="images/architecting_for_experimentation/problemsolutionboundary.png" /></p>
+<p>The boundary separates strategic decisions that define the problem from experimental decisions made while finding a solution. It is a team agreement, not a claim that one discipline always owns every decision.</p>
+<p>The diagram frames the problem as the stable space for planning and the solution as the space for experimentation.</p>
+</section>
+<section id="the-problem-side-define-the-destination" class="slide level2">
+<h2>The Problem Side: Define the Destination</h2>
+<p>Problem-side decisions are those the organization cares about for their own sake:</p>
+<ul>
+<li>Business objective and intended use case</li>
+<li>Evaluation protocol: population, labels, time horizon, metrics, and selection rules</li>
+<li>Success thresholds, constraints, and acceptable trade-offs</li>
+<li>The business concepts that downstream systems need</li>
+</ul>
+<p>Stakeholders are authorities on the destination and how success is judged. These choices should be explicit and relatively stable—not frozen forever.</p>
+</section>
+<section id="the-solution-side-explore-the-route" class="slide level2">
+<h2>The Solution Side: Explore the Route</h2>
+<p>Solution-side choices are usually means to the agreed end:</p>
+<ul>
+<li>Features, transformations, and representation</li>
+<li>Algorithms, model architectures, and hyperparameters</li>
+<li>Post-processing and training choices</li>
+<li>Which hypothesis to try next, informed by evidence</li>
+</ul>
+<p>The ML team needs room to test competing approaches end-to-end. A plausible idea is a hypothesis to evaluate, not automatically a binding implementation requirement.</p>
+</section>
+<section id="where-does-the-boundary-go" class="slide level2">
+<h2>Where Does the Boundary Go?</h2>
+<p><strong>A client says:</strong> “We need fewer high-risk accounts to reach manual review, while keeping the review team within capacity.” Which is the clearest problem-side statement?</p>
+<p>A. Use gradient-boosted trees with recent transaction features<br />
+B. Maximize recall at a fixed alert volume, with a stated review-capacity limit<br />
+C. Return a calibrated probability from 0 to 1<br />
+D. Use a two-stage model because the current rules are slow</p>
+<p>What makes the chosen statement belong on the problem side?</p>
+</section>
+<section id="answer-and-explanation" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> It describes a success measure and an operational constraint that stakeholders can evaluate across solutions.</p>
+<p>A, C, and D prescribe or expose solution details. A probability may be a useful interface if multiple consumers need it, but it does not by itself state the business objective. The exact metric and capacity rule still need validation with stakeholders.</p>
+</section>
+<section id="what-belongs-on-the-problem-side" class="slide level2">
+<h2>What Belongs on the Problem Side?</h2>
+<p>Take a current or recent client ML initiative. Name one decision the organization cares about for its own sake and one decision it would be comfortable discovering through experiments. Where is the boundary unclear?</p>
+</section>
+<section id="discussion-synthesis" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Listen for decisions grounded in business purpose, evaluation, and constraints versus decisions about the means of achieving them. A deployment constraint can belong on the problem side when it reflects a real business requirement; a model choice is not strategic merely because it is already implemented.</p>
+<p>The useful outcome is not a universal taxonomy. It is an explicit, shared agreement that stakeholders and the ML team can revisit when evidence or requirements change.</p>
+</section>
+<section id="why-this-is-an-architecture-problem" class="slide level2">
+<h2>Why This Is an Architecture Problem</h2>
+<p>Traditional modular architecture hides implementation details behind stable interfaces. ML adds more solution detail that may change as discovery progresses.</p>
+<p>If a dependent service knows the current algorithm, feature set, or internal score semantics, each experiment can become a cross-system migration. A boundary designed around business concepts lets the model implementation evolve behind a contract that downstream systems understand.</p>
+</section>
+<section id="abstract-the-model-not-the-business-need" class="slide level2">
+<h2>Abstract the Model, Not the Business Need</h2>
+<p><img data-src="images/architecting_for_experimentation/model_abstracting.png" /></p>
+<p>The diagram separates a model’s internal training, prediction, and evaluation processes from the business-level answer and metrics. Consumers should depend on the stable business contract, not on training internals or a particular model version.</p>
+</section>
+<section id="a-contract-that-can-survive-experiments" class="slide level2">
+<h2>A Contract That Can Survive Experiments</h2>
+<p>Specify the interface in terms of the business decision it supports: inputs, meaning of outputs, operational constraints, ownership, and version/change expectations.</p>
+<p>Avoid contracts that accidentally turn transient details into permanent dependencies:</p>
+<ul>
+<li>A named algorithm or hard-coded feature list</li>
+<li>A raw score whose meaning consumers must infer</li>
+<li>A label or metric tied to a specific UI or serving implementation</li>
+</ul>
+<p>A score can be a valid interface when multiple consumers need it—but define who owns score quality, how consumers use it, and which business outcomes they own.</p>
+</section>
+<section id="stable-interface-or-model-leakage" class="slide level2">
+<h2>Stable Interface or Model Leakage?</h2>
+<p><strong>A fraud service will be tried with new models and features. Which contract best limits downstream coupling?</strong></p>
+<p>A. <code>predict_fraud_v3(user_id)</code> returns the v3 model’s raw logit<br />
+B. A service returns a documented risk assessment for a transaction under a versioned business contract<br />
+C. Each consumer imports the model package and applies the current feature mapping<br />
+D. Consumers use the top five features as the explanation and routing rule</p>
+<p>What business meaning must still be agreed?</p>
+</section>
+<section id="answer-and-explanation-1" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> A stable, business-level contract can hide which algorithm and features implement the risk assessment.</p>
+<p>It still needs a precise definition: intended use, output semantics, relevant constraints, and change/version behavior. A score or risk category is not automatically meaningful just because it has an API. A, C, and D expose choices that experiments may change.</p>
+</section>
+<section id="what-would-you-put-in-the-api" class="slide level2">
+<h2>What Would You Put in the API?</h2>
+<p>For a churn intervention system, what must a downstream campaign service know—and what should it not need to know? What contract field would you expose, and what implementation detail would you hide?</p>
+</section>
+<section id="discussion-synthesis-1" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>A useful contract might express a business-relevant eligibility or prioritization result, with agreed semantics and operational constraints. If consumers truly need a score, document what it means and define the score producer’s responsibilities separately from each consumer’s business action.</p>
+<p>Feature names, model family, and hyperparameters generally belong behind the boundary. The contract should support the use case without pretending the implementation will stay still.</p>
+</section>
+<section id="the-hidden-failure-mode-circular-dependency" class="slide level2">
+<h2>The Hidden Failure Mode: Circular Dependency</h2>
+<p>When deployment is designed around the first successful model, the model choice shapes the system. Later experiments then require engineering rework; the cost of deployment pushes the team back toward the current model.</p>
+<p>That is a circular dependency: the solution depends on the problem, but the problem’s architecture also depends on the current solution. The experiment space shrinks to what the current deployment can accommodate.</p>
+<p>The goal is not “always build a large abstraction.” Avoid making solution-specific details part of the stable problem-side architecture when future experimentation is expected.</p>
+</section>
+<section id="the-simple-model-shortcut" class="slide level2">
+<h2>The “Simple Model” Shortcut</h2>
+<p><strong>An early logistic regression performs well enough. The team hard-codes it into a downstream service to save time. What is the main architectural trade-off?</strong></p>
+<p>A. The simpler algorithm makes business monitoring unnecessary<br />
+B. The initial deployment may be faster, but changing algorithms/features can now require engineering changes<br />
+C. Logistic regression cannot be replaced after deployment<br />
+D. The team has reduced the amount of evaluation required</p>
+<p>Which cost is being deferred?</p>
+</section>
+<section id="answer-and-explanation-2" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> Hard-coding the model can accelerate an initial release, but it makes a solution decision part of the architecture and adds future change cost.</p>
+<p>That is technical debt, not necessarily a wrong choice. Model simplicity does not remove the need for monitoring or evaluation; those depend on the business importance and use case. C overstates the lock-in, while D mistakes implementation choice for evaluation scope.</p>
+</section>
+<section id="is-the-abstraction-worth-it" class="slide level2">
+<h2>Is the Abstraction Worth It?</h2>
+<p>A client needs a proof of concept in six weeks and has one likely model family. What evidence would make you choose a thin stable interface now rather than hard-coding the first model? What would make hard-coding an acceptable, explicit trade-off?</p>
+</section>
+<section id="discussion-synthesis-2" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Ask how likely the solution is to change, how costly a downstream rewrite would be, and whether the business use case or deployment path is still uncertain. A small business-level seam may cost less than repeated migrations; overengineering a broad framework may not.</p>
+<p>If the team takes the shortcut, make the deferred cost and replacement trigger visible. An early model choice can be an intentional technical-debt decision, not a blanket prohibition.</p>
+</section>
+<section id="architecture-should-make-conflict-legible" class="slide level2">
+<h2>Architecture Should Make Conflict Legible</h2>
+<p>Many recurring project disagreements are boundary disagreements in disguise:</p>
+<ul>
+<li>Stakeholders prescribe a feature or algorithm; the team hears a requirement</li>
+<li>Goals and metrics shift, but old results are still compared as if nothing changed</li>
+<li>A fixed model is promised on a fixed date despite unresolved evidence</li>
+<li>Deployment constraints appear after experiments have optimized for something else</li>
+<li>Teams disagree about who owns scores, business outcomes, or technical trade-offs</li>
+</ul>
+<p>Name which side a request belongs to, who decides it, and what evidence would change it.</p>
+</section>
+<section id="a-stakeholder-requests-a-feature" class="slide level2">
+<h2>A Stakeholder Requests a Feature</h2>
+<p><strong>A stakeholder says:</strong> “Include region from the customer’s IP address; fraud clusters geographically.” Which response best protects both expertise and experimentation?</p>
+<p>A. Commit the feature because the stakeholder owns requirements<br />
+B. Reject the idea because stakeholders should not discuss modeling<br />
+C. Translate the concern into a measurable evaluation slice and test the feature as a hypothesis<br />
+D. Add the feature only if it improves overall accuracy</p>
+<p>What could overall accuracy conceal?</p>
+</section>
+<section id="answer-and-explanation-3" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: C.</strong> Preserve the domain insight as a testable concern, define how success will be measured, and let experiments determine whether that feature helps.</p>
+<p>Overall accuracy might conceal poor performance on geographically clustered fraud or a trade-off against fairness or another constraint. A turns a suggested means into a requirement; B discards useful stakeholder knowledge; D presumes one metric captures the goal.</p>
+</section>
+<section id="rewrite-a-prescriptive-request" class="slide level2">
+<h2>Rewrite a Prescriptive Request</h2>
+<p>How would you rewrite “use support-contact history in the churn model” as a problem-side objective plus a testable hypothesis? What comparison and guardrail would make the experiment useful?</p>
+</section>
+<section id="discussion-synthesis-3" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Separate the desired outcome from the proposed means. For example: “Improve identification of customers who can benefit from retention outreach, without exceeding the contact-capacity limit; test whether support-contact history improves the agreed evaluation.”</p>
+<p>The precise metric, population, and guardrail depend on the use case. The feature remains an experiment unless the organization has a reason to require it for its own sake.</p>
+</section>
+<section id="the-metric-changes-mid-project" class="slide level2">
+<h2>The Metric Changes Mid-Project</h2>
+<p><strong>After several months, a client changes the target from “predict any failure in 30 days” to “predict actionable failures in the next 48 hours.” What is the most responsible next step?</strong></p>
+<p>A. Keep the existing leaderboard and relabel the top model<br />
+B. Treat it as a new/changed problem definition; assess data, labels, evaluation, and prior learning before comparing results<br />
+C. Ask the ML team to pick whichever target gives better scores<br />
+D. Change only the model threshold; the evaluation remains comparable</p>
+<p>What needs revalidation?</p>
+</section>
+<section id="answer-and-explanation-4" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> The new horizon and actionability criterion may change the labels, data requirements, metric meaning, and which solution works.</p>
+<p>Prior experiments can still be informative, but should not be assumed comparable or valid under the new definition. Revalidate the evaluation protocol and relevant learnings; the shift may be small or may invalidate much of the previous progress.</p>
+</section>
+<section id="how-do-you-make-a-goal-change-safe" class="slide level2">
+<h2>How Do You Make a Goal Change Safe?</h2>
+<p>A sponsor has a legitimate new business insight late in the project. What should the team record before changing the target? How would you preserve useful learning without pretending results are apples-to-apples?</p>
+</section>
+<section id="discussion-synthesis-4" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Capture the old and new problem definitions, why the change is valuable, changes to population/labels/time horizon/metrics/use case, and the validation work that follows. Keep old results tied to the old protocol; compare across definitions only where a defensible bridge is established.</p>
+<p>The boundary is not a ban on change. It makes the impact of a problem-side change visible so the team can make it deliberately.</p>
+</section>
+<section id="stable-does-not-mean-frozen" class="slide level2">
+<h2>Stable Does Not Mean Frozen</h2>
+<p>A stable problem definition makes repeated experiments comparable and accumulates useful learning. It should represent a durable business challenge, not a point-in-time interface layout or backend implementation.</p>
+<p>When evidence reveals a mistaken assumption, revisit the definition. Expect to recheck data requirements, labels, features, model choices, metrics, and prior conclusions. The cost depends on the magnitude of the change.</p>
+</section>
+<section id="what-makes-a-metric-durable" class="slide level2">
+<h2>What Makes a Metric Durable?</h2>
+<p><strong>An e-commerce recommender is evaluated by “clicks on the first six visible items.” A product redesign changes the number and layout of visible items. What is the architectural concern?</strong></p>
+<p>A. A model metric should never include user behavior<br />
+B. The evaluation may be coupled to a point-in-time UI, weakening comparisons after redesign<br />
+C. The new UI guarantees that offline metrics are invalid<br />
+D. The team should freeze the UI until the model is retired</p>
+<p>How could the evaluation better express the business need?</p>
+</section>
+<section id="answer-and-explanation-5" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> If the metric depends on a particular screen layout or scroll behavior, a UI change can change the meaning of the evaluation.</p>
+<p>A durable problem definition avoids dependence on point-in-time UI/backend details. A measure should reflect the intended business outcome and use case, while the team validates how interface changes affect measurement. A and C overstate the issue; D confuses stable evaluation with frozen product design.</p>
+</section>
+<section id="what-should-stay-comparable" class="slide level2">
+<h2>What Should Stay Comparable?</h2>
+<p>Which population, time horizon, labels, serving filters, or product details could silently change the meaning of a model metric used in your consulting work? What belongs in the evaluation protocol?</p>
+</section>
+<section id="discussion-synthesis-5" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Look for the complete protocol, not just a metric name: what examples are included, how labels and time windows are defined, how constraints and selection rules apply, and what serving-layer behavior affects measurement.</p>
+<p>Durability does not mean ignoring meaningful user or product changes. It means making changes explicit and deciding whether old and new evaluations can fairly be compared.</p>
+</section>
+<section id="a-deployment-constraint-arrives-late" class="slide level2">
+<h2>A Deployment Constraint Arrives Late</h2>
+<p><strong>After offline experiments, the platform team says predictions must be available within 50 ms and cost less than $1,000/month. What does the architecture lesson suggest?</strong></p>
+<p>A. Latency and cost are always solution-side, so disregard them until model selection<br />
+B. Treat relevant deployment constraints as part of business understanding and evaluation; revisit prior experiments against them<br />
+C. Choose the most accurate model and ask platform to accommodate it<br />
+D. These constraints prove the project should not use ML</p>
+<p>How would you avoid a late surprise next time?</p>
+</section>
+<section id="answer-and-explanation-6" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> The use case and deployment scenario should shape the problem definition early; meaningful technical constraints can be success criteria or rejection thresholds.</p>
+<p>Past models may still offer learning, but their suitability must be re-evaluated. Latency and infrastructure cost are examples of constraints that can shape model selection. A ignores end-to-end trade-offs; C assumes resources; D jumps to a conclusion.</p>
+</section>
+<section id="where-does-deployment-begin" class="slide level2">
+<h2>Where Does Deployment Begin?</h2>
+<p>A team has a promising offline prototype but no serving owner, latency budget, or monitoring plan. In a consulting engagement, which questions and owners must be brought in during business understanding rather than after model selection?</p>
+</section>
+<section id="discussion-synthesis-6" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Clarify the actual use case, decision timing, inputs available at prediction time, latency/cost constraints, deployment and maintenance ownership, and how success will be monitored. The whole lifecycle matters; a model that cannot serve the agreed use case is not a successful solution to it.</p>
+<p>You need not design every production detail before experimentation. You do need enough of the deployment scenario to avoid optimizing toward an unusable target.</p>
+</section>
+<section id="who-owns-the-decision" class="slide level2">
+<h2>Who Owns the Decision?</h2>
+<p><strong>One score feeds fraud review, account holds, and customer outreach, each owned by a different team. What is the strongest responsibility design?</strong></p>
+<p>A. The ML team owns all business outcomes because it emits the score<br />
+B. The ML team owns score quality under an agreed contract; each consuming team owns its decision and business impact<br />
+C. No team owns outcomes until the model is fully autonomous<br />
+D. Let each consumer reinterpret the score without documenting its meaning</p>
+<p>What must the score owner and consumers agree?</p>
+</section>
+<section id="answer-and-explanation-7" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> A shared score interface can work when responsibilities remain explicit: the producing team is accountable for score quality, while consumers own how they use it and the resulting business impacts.</p>
+<p>Agree on score semantics, quality measures, handoffs, and consumer-specific decision policies. A overextends model-team ownership; C and D create accountability gaps.</p>
+</section>
+<section id="draw-the-ownership-map" class="slide level2">
+<h2>Draw the Ownership Map</h2>
+<p>For a credit-risk score consumed by underwriting and collections, who owns score quality, threshold/policy, fairness constraints, latency, and business outcome? Where would you expect a conflict?</p>
+</section>
+<section id="discussion-synthesis-7" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>There is no one-size-fits-all org chart, but there must be explicit accountable owners and metrics. If the ML team’s contract is score quality alone, consumers own their decisions; if the ML team is accountable for an end-to-end use case, its responsibilities and authority must include relevant technical and business trade-offs.</p>
+<p>Technical performance such as latency can also be a trade-off the modeling team needs to assess. Clarify shared dependencies rather than leaving them in the gaps.</p>
+</section>
+<section id="promising-a-model-by-a-date" class="slide level2">
+<h2>Promising a Model by a Date</h2>
+<p><strong>A sales lead promises a client “a model with 95% precision in eight weeks,” before data understanding. What is the safer architectural commitment?</strong></p>
+<p>A. Guarantee the precision because a fixed delivery date requires a fixed metric<br />
+B. Commit to an experiment plan, decision gates, and a jointly defined success protocol; report evidence and uncertainty<br />
+C. Ask the ML team to choose a more achievable metric after training<br />
+D. Avoid milestones because ML is experimental</p>
+<p>What can be promised responsibly?</p>
+</section>
+<section id="answer-and-explanation-8" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> Experimental outcomes cannot be responsibly guaranteed before the problem, data, and evaluation are understood. A team can commit to learning milestones, transparent evidence, and decision points.</p>
+<p>The goal is not to avoid accountability. Define what the team will learn and deliver, who decides whether results meet the agreed criteria, and what options follow. A promises an outcome without evidence; C moves the goalposts; D confuses uncertain results with unstructured work.</p>
+</section>
+<section id="turn-a-delivery-promise-into-a-learning-plan" class="slide level2">
+<h2>Turn a Delivery Promise into a Learning Plan</h2>
+<p>A client contract asks for a production-ready model in one quarter, but data access and labels are uncertain. What milestones, decision rights, and fallback options would you propose without pretending the performance outcome is known?</p>
+</section>
+<section id="discussion-synthesis-8" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Separate controllable work from uncertain findings: clarify the objective and evaluation, establish data access/quality, run a baseline, test feasibility, and hold explicit decisions on whether to continue, reframe, or use a simpler non-ML option.</p>
+<p>A plan can include deployment preparation and a date; it should not imply that experiments guarantee a performance threshold. Align contract language and stakeholder expectations with evidence and dependencies.</p>
+</section>
+<section id="the-boundary-in-the-ml-lifecycle" class="slide level2">
+<h2>The Boundary in the ML Lifecycle</h2>
+<p>CRISP-DM distinguishes business understanding from later modeling and evaluation:</p>
+<ol type="1">
+<li>Define the problem, boundary, use case, and deployment scenario.</li>
+<li>Understand data and prepare it for the defined evaluation.</li>
+<li>Experiment with models and evaluate under the agreed protocol.</li>
+<li>Deploy and maintain; use findings to revisit earlier assumptions when needed.</li>
+</ol>
+<p>Phases are a guard against speculative work becoming hidden commitment—not a ban on feedback. Later evidence can send the team back to earlier decisions.</p>
+</section>
+<section id="does-a-new-experiment-change-the-problem" class="slide level2">
+<h2>Does a New Experiment Change the Problem?</h2>
+<p><strong>The ML team tries a transformer model, new features, and a different regularization setting while keeping the agreed use case and evaluation protocol. What changed?</strong></p>
+<p>A. The problem definition necessarily changed<br />
+B. The solution space changed; results remain comparable if the protocol was applied consistently<br />
+C. The stakeholders must approve each experiment because the metric is stable<br />
+D. The model is invalid unless deployment is redesigned first</p>
+<p>What evidence would make you revisit the problem side?</p>
+</section>
+<section id="answer-and-explanation-9" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> These are experimental solution changes under the same problem definition. They can be compared when the evaluation protocol and relevant conditions remain consistent.</p>
+<p>If evidence reveals a flaw in the target, labels, constraints, or use case, revisit the problem side explicitly. That is different from asking permission for every model iteration.</p>
+</section>
+<section id="when-should-the-team-go-back-a-phase" class="slide level2">
+<h2>When Should the Team Go Back a Phase?</h2>
+<p>An evaluation shows poor generalization. What evidence would justify revisiting data preparation, and what evidence would suggest the problem definition or evaluation itself needs review?</p>
+</section>
+<section id="discussion-synthesis-9" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Poor performance can have several causes; diagnose rather than relabel. Data quality, leakage, representativeness, and preparation may warrant returning to data work. A target that cannot support the intended action, inconsistent labels, or a metric misaligned with business value may warrant revisiting business understanding.</p>
+<p>CRISP-DM includes backward movement. The important discipline is to record what changed and re-establish comparability before presenting a new result as an improvement.</p>
+</section>
+<section id="is-model-complexity-the-problem" class="slide level2">
+<h2>Is Model Complexity the Problem?</h2>
+<p><strong>A client objects to a complex model. Which response best applies the boundary?</strong></p>
+<p>A. Treat low complexity as a universal requirement<br />
+B. Ask what business concern complexity represents—such as latency, interpretability, or memory—and encode that concern as a measurable constraint if needed<br />
+C. Dismiss the concern because complexity is always an implementation detail<br />
+D. Select the most complex model to preserve experimental freedom</p>
+<p>Which concerns are intrinsically valuable to this organization?</p>
+</section>
+<section id="answer-and-explanation-10" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> Complexity alone may not matter to the organization; it may be a proxy for an outcome that does matter.</p>
+<p>If interpretability, latency, or memory has business significance, define the relevant requirement and evaluate solutions against it. If not, model complexity is usually an experimental choice. Neither unconditional simplicity nor unconditional complexity addresses the real concern.</p>
+</section>
+<section id="translate-the-proxy" class="slide level2">
+<h2>Translate the Proxy</h2>
+<p>A client says, “We need an explainable model.” What questions would distinguish a genuine decision requirement from a preference for a familiar algorithm? How could the answer affect architecture and evaluation?</p>
+</section>
+<section id="discussion-synthesis-10" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Clarify who needs an explanation, for what decision, at what time, and what evidence would make it adequate. A genuine use-case or regulatory constraint belongs in the problem definition and may shape both evaluation and interface; a preferred algorithm is one possible means, not proof the requirement is met.</p>
+<p>Make the decision and acceptance criteria explicit. “Explainable” without a user, purpose, or test can create disagreement rather than control.</p>
+</section>
+<section id="what-is-the-baseline" class="slide level2">
+<h2>What Is the Baseline?</h2>
+<p><strong>A new ML model beats the previous ML model in offline evaluation. What comparison best answers whether it solves the business problem better?</strong></p>
+<p>A. Compare only the two ML models; non-ML solutions are out of scope<br />
+B. Compare candidate approaches, including the current process or a simple heuristic, under a shared problem definition and evaluation<br />
+C. Compare the candidate’s training loss with the previous model’s test score<br />
+D. Select the newest model because it reflects the latest data</p>
+<p>What must be held consistent for a fair comparison?</p>
+</section>
+<section id="answer-and-explanation-11" class="slide level2">
+<h2>Answer and Explanation</h2>
+<p><strong>Best answer: B.</strong> The problem should be framed so candidate solutions can be scientifically compared—including manual effort, a heuristic, conventional engineering, or ML where relevant.</p>
+<p>Use the same agreed evaluation and constraints. A good model is not automatically more useful than the current process; training loss and test score are not directly comparable; recency alone is not evidence of business value.</p>
+</section>
+<section id="consulting-case-maintenance-triage" class="slide level2">
+<h2>Consulting Case — Maintenance Triage</h2>
+<p>A manufacturer wants to reduce unplanned downtime. Early workshops produce three proposals: classify failures within 30 days, predict time-to-failure, or prioritize machines for an inspection queue. The client asks for a dashboard “with the model’s confidence.” Data labels are inconsistent; inspections are capacity-limited; a deployment platform has a latency budget.</p>
+<p>Your team has two weeks to recommend an architecture and discovery plan.</p>
+</section>
+<section id="case-discussion-build-the-boundary" class="slide level2">
+<h2>Case Discussion — Build the Boundary</h2>
+<p>What architecture and discovery plan would you recommend?</p>
+<ul>
+<li>What is the business problem and intended decision, and what remains unresolved?</li>
+<li>What evaluation protocol and operational constraint would you use?</li>
+<li>What stable contract should the inspection queue consume?</li>
+<li>Which experiment would you run, and what risk of premature commitment would you watch for?</li>
+</ul>
+</section>
+<section id="case-discussion-expert-synthesis" class="slide level2">
+<h2>Case Discussion — Expert Synthesis</h2>
+<p>Start with the decision the company needs to make—such as which machines to inspect within limited capacity—rather than choosing a prediction target before confirming what is actionable. Agree on labels, time horizon, evaluation population, and selection criteria with domain experts.</p>
+<p>The queue can consume a business-level prioritization or risk assessment under a clear contract. Treat 30-day classification, time-to-failure, and alternative features as hypotheses until evaluated. Include latency and inspection capacity as relevant constraints; expose uncertainty only with agreed meaning. If the target changes, assess what prior data and results still support.</p>
+</section>
+<section id="architecture-review-six-questions-to-ask" class="slide level2">
+<h2>Architecture Review: Six Questions to Ask</h2>
+<ol type="1">
+<li>What decision or business outcome is the system meant to support?</li>
+<li>How will stakeholders judge success, including constraints and trade-offs?</li>
+<li>Which facts belong in the durable contract, and which are experimental?</li>
+<li>Can a new model or heuristic be substituted without consumer rewrites?</li>
+<li>Who owns the output’s quality, downstream action, and business impact?</li>
+<li>What changes would redefine the problem—and what prior evidence would need revalidation?</li>
+</ol>
+</section>
+<section id="where-does-your-boundary-leak" class="slide level2">
+<h2>Where Does Your Boundary Leak?</h2>
+<p>Think of a system you have designed or reviewed. Which downstream dependency most tightly couples a consumer to model internals? What is the smallest contract change that would reduce that coupling without building a general-purpose platform?</p>
+</section>
+<section id="discussion-synthesis-11" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Common leaks include model-version-specific fields, a score with undocumented semantics, consumer-owned feature preprocessing, and evaluation tied to implementation details. The smallest useful change is often a clear business-level output contract plus explicit ownership and change expectations.</p>
+<p>Keep the solution free to evolve, but avoid abstracting beyond the actual use case. Architecture is valuable when it reduces the cost of likely change.</p>
+</section>
+<section id="what-conflict-would-you-surface-earlier" class="slide level2">
+<h2>What Conflict Would You Surface Earlier?</h2>
+<p>Which recurring disagreement—feature prescriptions, shifting metrics, deployment readiness, or ownership—would benefit most from making the problem-solution boundary explicit? What one sentence could a team add to its project brief?</p>
+</section>
+<section id="discussion-synthesis-12" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Name the decision and its owner, not just the tension. For example: “Stakeholders own the evaluation objective and constraints; the ML team proposes and tests solution hypotheses against them; a material objective change triggers an impact review of data and prior results.”</p>
+<p>The exact wording should fit the engagement. A boundary is useful only when the people making and implementing decisions share it.</p>
+</section>
+<section id="how-would-you-know-it-worked" class="slide level2">
+<h2>How Would You Know It Worked?</h2>
+<p>After deployment, what signals would tell you the architecture is supporting experimentation rather than just hosting a model? What would you inspect at the next model replacement?</p>
+</section>
+<section id="discussion-synthesis-13" class="slide level2">
+<h2>Discussion Synthesis</h2>
+<p>Look for whether a model or feature experiment can be evaluated and substituted without downstream redesign; whether business-level outputs remain understood; whether teams can trace each result to the applicable problem definition; and whether ownership for monitoring and action is clear.</p>
+<p>An abstraction is not successful merely because the API stayed stable. It should preserve the agreed business meaning and allow evidence-led changes with bounded impact.</p>
+</section>
+<section id="what-to-take-back-to-a-client" class="slide level2">
+<h2>What to Take Back to a Client</h2>
+<ul>
+<li>Define the destination before prescribing the route.</li>
+<li>Make the problem-solution boundary explicit and build stable, business-level contracts around it.</li>
+<li>Keep evaluation, use case, and deployment constraints aligned; treat meaningful problem changes as changes to validate.</li>
+<li>Convert proposed solutions into hypotheses; preserve room for experimentation.</li>
+<li>Make ownership and trade-offs visible so architecture prevents recurring conflict instead of encoding it.</li>
+</ul>
+</section>
+<section id="closing-discussion" class="slide level2">
+<h2>Closing Discussion</h2>
+<p>What is one decision in your next ML engagement that you will explicitly place on the problem side—and one you will keep open for experimentation?</p>
+</section>
+    </div>
+  </div>
+
+  <script src="./reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="./reveal.js/plugin/notes/notes.js"></script>
+  <script src="./reveal.js/plugin/search/search.js"></script>
+  <script src="./reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
