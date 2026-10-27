@@ -29,6 +29,7 @@ Dan is a machine learning engineer and lapsed theoretical astrophysicist with a 
 
 <h2 id="presentations">Presentations</h2>
 
+*   **Architecting for Experimentation** + [slides](/slides/architecting_for_experimentation.html)
 *   **[Improving our Teams' Learning Cultures](https://www.youtube.com/watch?v=5tAnMRAbwY0)** + [slides](/slides/learning_cultures.html) (2024)
 *   **[ML and AI for Interstellar Colonization](https://www.youtube.com/watch?v=0d-eM2FToZg&t=3084s)** (2021)
 *   **[A Recipe for Training Neural Networks](https://www.youtube.com/watch?v=qajDVYLfeVg)** (2019)
